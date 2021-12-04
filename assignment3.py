@@ -61,7 +61,7 @@ class td_qlearning:
       #makes a list of all of the possible qvalues for Q(s',a') this will be used later to get the max a'
       all_values = td_qlearning.qvalues_dict[trial_list[i + 1][0]].values()
       #this is the update function Q(s,a)<-Q(s,a)+alpha(r(s)+(gamma * max(a'(Q(s',a'))))-Q(s,a))
-      td_qlearning.qvalues_dict[trial_list[i][0]][trial_list[i][1]] = q_of_sa + td_qlearning.alpha * (td_qlearning.rvalues_dict[trial_list[i][0]][trial_list[i][1]] + td_qlearning.gamma * max(all_values) - q_of_sa)
+      td_qlearning.qvalues_dict[trial_list[i][0]][trial_list[i][1]] = q_of_sa + td_qlearning.alpha * (td_qlearning.rvalues_dict[trial_list[i][0]] + td_qlearning.gamma * max(all_values) - q_of_sa)
 
     # Return nothing
 
@@ -77,10 +77,3 @@ class td_qlearning:
     a = td_qlearning.qvalues_dict[state]
     # Return the optimal action under the learned policy
     return max(a, key=a.get())
-
-#For Testing
-def main():
-  td_qlearning("Example0/trial.csv")
-
-if __name__ == "__main__":
-  main()
