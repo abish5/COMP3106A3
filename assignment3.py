@@ -76,4 +76,4 @@ class td_qlearning:
     # state is a string representation of a state
     a = td_qlearning.qvalues_dict[state]
     # Return the optimal action under the learned policy
-    return max(a, key=a.get())
+    return max(a, key=a.get)
